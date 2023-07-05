@@ -2,7 +2,7 @@
 import paho.mqtt.publish as publish
 import time
 
-mqtt_broker = "192.168.1.3"
+mqtt_broker = "192.168.1.1"
 mqtt_username = "admin"
 mqtt_pwd = "mqttbroker"
 mqtt_topic = "BabyRoom/MotionSensor"
