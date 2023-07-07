@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/livingroom.css')}}">
 
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/livingroom.js')}}"></script>
 </head>
 
@@ -29,17 +30,16 @@
     </div>
 
     <div class="livbdydiv">
-
-        <form method="POST" action="/livingroom">
-            
-        </form>
-
         <div class="livlightdiv">
-            <label for="lighttoggle">Light</label>
-            <label class="lightswitch">
-                <input type="checkbox" class="livlighttoggle" id="livlighttoggle" name="lighttoggle" value="Lighting">            
+            <label class="lightswitch" for="lighttoggle">
+                Light: 
+                <input type="checkbox" class="livlighttoggle" id="livlighttoggle" name="lighttoggle">            
                 <span class="slider"></span>
             </label>
+
+            <div class="lightstatusdiv">
+                <p class="lrlightstatus" id="lrlightstatus"></p>
+            </div>
             
         </div>
 
@@ -48,6 +48,8 @@
             <input type="checkbox" class="livfantoggle" id="livfantoggle" name="fantoggle" value="Fan">            
             <span class="fanslider"></span>
         </div>
+
+        
 
 
     </div>

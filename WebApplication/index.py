@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, json, jsonify
 from flask import render_template
 from flask import redirect
 from flask import request
+import subprocess
+
 
 app = Flask(__name__)
 
@@ -21,6 +23,23 @@ def doorway():
 @app.route('/livingroom')
 def livingroom():
     return render_template('livingroom.html')
+
+@app.route('/process_LRLight_Toggle', methods=['POST'])
+def process_light():
+    print('Process triggered')
+    status = request.form.get('status')
+    print('Status: ', status)
+    if status == 'true':
+        print('Status is true.')
+        subprocess.Popen(['python', '../Living Room/LivingRoom_Light_On.py'])
+        return jsonify({'msg': 'The living room light is turned On'})
+    elif status == 'false':
+        print('Status is false.')
+        subprocess.Popen(['python', '../Living Room/LivingRoom_Light_Off.py'])
+        return jsonify({'msg': 'The living room light is turned Off'})
+    else:
+        print('Status is error.')
+        return jsonify({'msg': 'There is an error with the Living Room light toggle.'})
 
 @app.route('/babyroom')
 def babyroom():
