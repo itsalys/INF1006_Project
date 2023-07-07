@@ -13,6 +13,10 @@
     <!-- Living Page -->
     <!-- Light, TV - ir transmitter, curtains, rain sensor, Fan -->
     <title>Smart Living Room Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/livingroom.css')}}">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/livingroom.js')}}"></script>
 </head>
 
 <body>
@@ -26,14 +30,23 @@
 
     <div class="livbdydiv">
 
+        <form method="POST" action="/livingroom">
+            
+        </form>
+
         <div class="livlightdiv">
             <label for="lighttoggle">Light</label>
-            <input type="checkbox" class="livlighttoggle" id="livlighttoggle" name="lighttoggle" value="Lighting">            
+            <label class="lightswitch">
+                <input type="checkbox" class="livlighttoggle" id="livlighttoggle" name="lighttoggle" value="Lighting">            
+                <span class="slider"></span>
+            </label>
+            
         </div>
 
         <div class="livfandiv">
             <label for="livfantoggle">Fan</label>
             <input type="checkbox" class="livfantoggle" id="livfantoggle" name="fantoggle" value="Fan">            
+            <span class="fanslider"></span>
         </div>
 
 
