@@ -40,6 +40,23 @@ def process_light():
     else:
         print('Status is error.')
         return jsonify({'msg': 'There is an error with the Living Room light toggle.'})
+    
+@app.route('/process_LRFan_Toggle', methods=['POST'])
+def process_fan():
+    print('Process triggered')
+    status = request.form.get('status')
+    print('Status: ', status)
+    if status == 'true':
+        print('Status is true.')
+        subprocess.Popen(['python', '../Living Room/LivingRoom_Fan_On.py'])
+        return jsonify({'msg': 'The living room fan is turned On'})
+    elif status == 'false':
+        print('Status is false.')
+        subprocess.Popen(['python', '../Living Room/LivingRoom_Fan_Off.py'])
+        return jsonify({'msg': 'The living room fan is turned Off'})
+    else:
+        print('Status is error.')
+        return jsonify({'msg': 'There is an error with the Living Room fan toggle.'})
 
 @app.route('/babyroom')
 def babyroom():
