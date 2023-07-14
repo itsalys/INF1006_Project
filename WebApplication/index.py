@@ -31,11 +31,11 @@ def process_light():
     print('Status: ', status)
     if status == 'true':
         print('Status is true.')
-        subprocess.Popen(['python', '../Living Room/LivingRoom_Light_On.py'])
+        subprocess.Popen(['python', 'Living Room/LivingRoom_Light_On.py'])
         return jsonify({'msg': 'The living room light is turned On'})
     elif status == 'false':
         print('Status is false.')
-        subprocess.Popen(['python', '../Living Room/LivingRoom_Light_Off.py'])
+        subprocess.Popen(['python', 'Living Room/LivingRoom_Light_Off.py'])
         return jsonify({'msg': 'The living room light is turned Off'})
     else:
         print('Status is error.')
@@ -48,11 +48,11 @@ def process_fan():
     print('Status: ', status)
     if status == 'true':
         print('Status is true.')
-        subprocess.Popen(['python', '../Living Room/LivingRoom_Fan_On.py'])
-        return jsonify({'msg': 'The living room fan is turned On'})
+        subprocess.Popen(['python', 'Living Room/LivingRoom_Fan_On.py'])
+        return jsonify({'msg': 'The living sroom fan is turned On'})
     elif status == 'false':
         print('Status is false.')
-        subprocess.Popen(['python', '../Living Room/LivingRoom_Fan_Off.py'])
+        subprocess.Popen(['python', 'Living Room/LivingRoom_Fan_Off.py'])
         return jsonify({'msg': 'The living room fan is turned Off'})
     else:
         print('Status is error.')
