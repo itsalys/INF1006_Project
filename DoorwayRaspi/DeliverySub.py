@@ -4,7 +4,7 @@ import base64
 import paho.mqtt.publish as publish
 from time import sleep
 
-mqtt_broker = "192.168.10.141"
+mqtt_broker = "192.168.1.2"
 mqtt_username = "admin"
 mqtt_pwd = "mqttbroker"
 
@@ -25,7 +25,6 @@ def hello():
     print(f"Published to Doorway/UltrasonicSensor: In Range")
 
     camera.capture('image.jpg')
-    camera.close()
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
