@@ -5,8 +5,8 @@ import paho.mqtt.client as mqtt
 import RPi.GPIO as GPIO
 import time
 
-# mqtt_broker = "192.168.1.2"
-mqtt_broker = "192.168.10.20" # Home Test
+mqtt_broker = "192.168.1.2"
+# mqtt_broker = "192.168.10.20" # Home Test
 mqtt_username = "admin"
 mqtt_pwd = "mqttbroker"
 topics = [("LivingRoom/Light", 0), ("LivingRoom/Fan", 0)]
