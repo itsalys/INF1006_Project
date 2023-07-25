@@ -11,7 +11,8 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="static/css/style.css"> -->
-    <link href="../static/css/doorway.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/doorway.css') }}" rel="stylesheet">
 
     <!-- Doorway Page -->
     <!--Delivery - Camera, Security Motion - Ultra / Weight -->
@@ -42,51 +43,53 @@
                             <div class="secfeeddiv">
                                 <!-- Placeholder for Security Feed-->
                                 <div class="secfeed">
-                                    <img src="../../Security_image.jpg" class="secfeed-img">
+                                    <img src="{{ url_for('static', filename='images/Security_image.jpg') }}" class="secfeed-img">
                                 </div>
         
                             </div>
-        
                             <div class="secnotifsdiv">
-                                <!-- Example of Security Notifications-->
-                                <div class="notif-div">
-                                    <div class="notif-card">
-        
-                                        <div class="notif-top">
-                                            
-                                            <div class="notif-left">
-                                                <!--Time Stamp-->
-                                                <div class="time-stamp-div">
-                                                    <p class="time-stamp">
-                                                        09:04:58 10/03/2023
+                                <div class="sec-notifs-list">
+                                    <!-- Example of Security Notifications-->
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
+                                                
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        Someone is outside your door! Please check the feed.
                                                     </p>
                                                 </div>
-                                                
-                                            </div> 
-                                            
-                                            <div class="notif-right">
-                                                <!--Close Button-->
-                                                <div class="notif-close-div">
-                                                    <button class="notif-close">
-                                                        <img src="../static/svg/x.svg" class="notif-x">
-                                                    </button>
-                                                </div>
+            
                                             </div>
                                         </div>
-        
-                                        <div class="notif-btm">
-                                            <div class="notif-content">
-                                                <p class="notif-txt">
-                                                    Someone is outside your door! Please check the feed.
-                                                </p>
-                                            </div>
-        
-                                        </div>
+                                        
                                     </div>
                                     
                                 </div>
-                                
                             </div>
+                            
                             
                         </div>
                     </section>
@@ -104,48 +107,200 @@
                                 <!-- Placeholder for Delivery Feed-->
                                 <div class="delfeed">
                                     <!--Placeholder Image for styling-->
-                                    <img src="../../Delivery_image.jpg" class="secfeed-img">
+                                    <img src="{{ url_for('static', filename='images/Delivery_image.jpg') }}" class="delfeed-img">
                                 </div>
         
                             </div>
         
                             <div class="delnotifsdiv">
-                                <!-- Example of Delivery Notifications-->
-                                <div class="notif-div">
-                                    <div class="notif-card">
-        
-                                        <div class="notif-top">
-                                            
-                                            <div class="notif-left">
-                                                <!--Time Stamp-->
-                                                <div class="time-stamp-div">
-                                                    <p class="time-stamp">
-                                                        09:04:58 10/03/2023
+                                <div class="del-notifs-list">
+
+                                    <!-- Example of Delivery Notifications-->
+
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
+                                                
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        You have a delivery! Please check the feed for photos.
                                                     </p>
                                                 </div>
+            
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
                                                 
-                                            </div> 
-                                            
-                                            <div class="notif-right">
-                                                <!--Close Button-->
-                                                <div class="notif-close-div">
-                                                    <button class="notif-close">
-                                                        <img src="../static/svg/x.svg" class="notif-x">
-                                                    </button>
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-        
-                                        <div class="notif-btm">
-                                            <div class="notif-content">
-                                                <p class="notif-txt">
-                                                    You have a delivery! Please check the feed for photos.
-                                                </p>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        You have a delivery! Please check the feed for photos.
+                                                    </p>
+                                                </div>
+            
                                             </div>
-        
                                         </div>
+                                        
                                     </div>
-                                    
+
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
+                                                
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        You have a delivery! Please check the feed for photos.
+                                                    </p>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
+                                                
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        You have a delivery! Please check the feed for photos.
+                                                    </p>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="notif-div">
+                                        <div class="notif-card">
+            
+                                            <div class="notif-top">
+                                                
+                                                <div class="notif-left">
+                                                    <!--Time Stamp-->
+                                                    <div class="time-stamp-div">
+                                                        <p class="time-stamp">
+                                                            09:04:58 10/03/2023
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div> 
+                                                
+                                                <div class="notif-right">
+                                                    <!--Close Button-->
+                                                    <div class="notif-close-div">
+                                                        <button class="notif-close">
+                                                            <img src="../static/svg/x.svg" class="notif-x">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="notif-btm">
+                                                <div class="notif-content">
+                                                    <p class="notif-txt">
+                                                        You have a delivery! Please check the feed for photos.
+                                                    </p>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
         
                             </div>

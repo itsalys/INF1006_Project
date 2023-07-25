@@ -13,68 +13,148 @@ body{
 .doorway-container{
     height: 100%;
     width: 100%;
+    padding: 2rem;
 }
 
 .doorway-div{
-
+    padding-bottom: 1rem;
 }
 
 .doortitlediv{
-
+    padding-bottom: 1.2rem;
 }
 
 .doortitletxt{
+    margin: 0;
+
+}
+
+.doorbackdiv{
+    padding-bottom: 1rem;
+}
+
+.doorbackbtn{
+    background-color: #4583FC;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.3rem;
+    font-style: normal;
+    text-decoration: none;
 
 }
 
 .doorbdydiv{
+    width: 100%;
 
 }
 
-.sectionsecdiv{
+/*Security Section*/
 
+.sectionsecdiv{
+    width: 100%;
+    height: 100%;
 }
 
 .sectionsec{
-
+    width: 100%;
+    height: 100%;
 }
 
 .sectitlediv{
-
+    width: 100%;
+    padding-bottom: 1.2rem;
 }
 
 .sectitle{
-
+    margin: 0;
 }
 
-.secbdydiv{
-
+.secbdydiv, .delbdydiv{
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
 }
 
-.secfeeddiv{
-
+.secfeeddiv, .delfeeddiv{
+    width: 50%;
+    height: 100%;
+    padding-right: 1rem;
 }
 
 .secfeed{
+    width: 100%;
+}
+
+.secfeed-img{
+    width: 100%
+}
+
+/*Delivery Section*/
+
+.delsectiondiv{
+    height: 100%;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.delsection{
+    height: 100%;
+    width: 100%;
+}
+
+.deltitlediv{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 
 }
 
-.secnotifsdiv{
+.deltitle{
 
+    margin: 0;
 }
+
+.delfeed{
+    width: 100%;
+}
+
+.delfeed-img{
+    width: 100%
+}
+
 
 /*Notification General Styling*/
 
-.notif-div{
+.secnotifsdiv, .delnotifsdiv{
+    width: 50%;
+    padding-left: 1rem;
+    display: flex;
+    
+    
+}
 
+.sec-notifs-list, .del-notifs-list{
+    overflow: hidden;
+    display: flex;
+    border-radius: 1rem;
+    background-color: #cfcfcf;
+    width: 100%;
+}
+
+.notif-div{
+    padding: 1rem;
+    width: 100%;
 }
 
 .notif-card{
-
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    width: 100%;
 }
 
 .notif-top{
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .notif-left{
@@ -94,14 +174,24 @@ body{
 }
 
 .notif-close-div{
-
+    
 }
 
 .notif-close{
+    background-color: #ff4653;
+    border-radius: 50%;
+    border: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
 .notif-x{
+    height: 0.7rem;
+    width: 0.7rem;
 
 }
 
@@ -114,5 +204,5 @@ body{
 }
 
 .notif-txt{
-
+    margin: 0;
 }
