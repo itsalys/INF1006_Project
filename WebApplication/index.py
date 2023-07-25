@@ -1,8 +1,11 @@
-from flask import Flask, json, jsonify
+from flask import Flask, json, jsonify, Response
 from flask import render_template
 from flask import redirect
 from flask import request
+from camera import Camera
 import subprocess
+
+
 
 
 app = Flask(__name__)
@@ -19,6 +22,18 @@ def analytics():
 @app.route('/doorway')
 def doorway():
     return render_template('doorway.html')
+
+def generate_frames(camera):
+    while True:
+        frame =camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+@app.route('/doorway_camera')
+def camera_feed():
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 @app.route('/livingroom')
 def livingroom():
