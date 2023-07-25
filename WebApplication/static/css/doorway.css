@@ -18,6 +18,7 @@ body{
 
 .doorway-div{
     padding-bottom: 1rem;
+    height: 100%;
 }
 
 .doortitlediv{
@@ -45,7 +46,7 @@ body{
 
 .doorbdydiv{
     width: 100%;
-
+    height: 100%;
 }
 
 /*Security Section*/
@@ -72,6 +73,7 @@ body{
 .secbdydiv, .delbdydiv{
     width: 100%;
     display: flex;
+    height: 100%;
     /* flex-direction: column; */
 }
 
@@ -86,7 +88,9 @@ body{
 }
 
 .secfeed-img{
-    width: 100%
+    width: 100%;
+    height: 100%;
+    min-width: 30rem;
 }
 
 /*Delivery Section*/
@@ -118,26 +122,48 @@ body{
 }
 
 .delfeed-img{
-    width: 100%
+    width: 100%;
+    height: 100%;
 }
 
 
 /*Notification General Styling*/
 
-.secnotifsdiv, .delnotifsdiv{
+.secnotifsdiv{
     width: 50%;
     padding-left: 1rem;
-    display: flex;
-    
+    height: 100%;
+}
+
+
+.delnotifsdiv{
+    width: 50%;
+    padding-left: 1rem;
+    height: 100%;
     
 }
 
-.sec-notifs-list, .del-notifs-list{
-    overflow: hidden;
+.sec-notifs-list{
+    height: 100%;
     display: flex;
     border-radius: 1rem;
     background-color: #cfcfcf;
     width: 100%;
+    flex-direction: column;
+    overflow: auto;
+    align-self: stretch;
+    flex: 1;
+}
+
+.del-notifs-list{
+    height: 100%;
+    display: flex;
+    border-radius: 1rem;
+    background-color: #cfcfcf;
+    width: 100%;
+    flex-direction: column;
+    overflow: auto;
+    align-self: stretch;
 }
 
 .notif-div{
