@@ -35,7 +35,7 @@ def on_message(client, userdata, msg):
         image = Image.open(io.BytesIO(image_data))
         
         # Save the image to a file
-        image.save("Delivery_image.jpg")
+        image.save("../static/images/Delivery_image.jpg")
         
         print("Image saved successfully.")
         
@@ -50,7 +50,7 @@ def on_message(client, userdata, msg):
         image = Image.open(io.BytesIO(image_data))
         
         # Save the image to a file
-        image.save("Security_image.jpg")
+        image.save("../static/images/Security_image.jpg")
         
         print("Image saved successfully.")
         
