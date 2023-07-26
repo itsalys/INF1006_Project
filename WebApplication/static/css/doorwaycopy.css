@@ -1,0 +1,254 @@
+html{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.doorway-container{
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+}
+
+.doorway-div{
+    padding-bottom: 1rem;
+    height: 100%;
+}
+
+.doortitlediv{
+    padding-bottom: 1.2rem;
+}
+
+.doortitletxt{
+    margin: 0;
+
+}
+
+.doorbackdiv{
+    padding-bottom: 1rem;
+}
+
+.doorbackbtn{
+    background-color: #4583FC;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.3rem;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.doorbdydiv{
+    width: 100%;
+    height: 100%;
+}
+
+/*Security Section*/
+
+.sectionsecdiv{
+    width: 100%;
+    height: 100%;
+}
+
+.sectionsec{
+    width: 100%;
+    height: 100%;
+}
+
+.sectitlediv{
+    width: 100%;
+    padding-bottom: 1.2rem;
+}
+
+.sectitle{
+    margin: 0;
+}
+
+.secbdydiv, .delbdydiv{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    /* flex-direction: column; */
+}
+
+.secfeeddiv{
+    /* width: 50%;
+    height: 100%;
+    
+    padding-right: 1rem; */
+
+    flex:1;
+    height: 35rem;
+    width: 50%;
+    overflow: hidden;
+}
+
+/* .secfeed{
+    width: 100%;
+} */
+
+.secfeed-img{
+    width: 100%;
+    height: auto;
+}
+
+/*Security Notification Styling*/
+
+.secnotifsdiv{
+    width: 50%;
+    height: 100%;
+    flex: 1;
+    overflow: auto;
+    max-height: 50vh;
+
+    padding-left: 1rem;
+    /*  */
+}
+
+.sec-notifs-list{
+    height: 100%;
+    width: 100%;
+    background-color: #cfcfcf;
+    border-radius: 1rem;
+    
+    /*display: flex;
+    flex-direction: column;*/
+}
+
+
+/*Delivery Section*/
+
+.delsectiondiv{
+    height: 100%;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.delsection{
+    height: 100%;
+    width: 100%;
+}
+
+.deltitlediv{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+
+}
+
+.deltitle{
+
+    margin: 0;
+}
+
+.delfeeddiv{
+    width: 50%;
+    height: 100%;
+    padding-right: 1rem;
+}
+
+/* .delfeed{
+    width: 100%;
+} */
+
+.delfeed-img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*Delivery Notification Styling*/
+
+.delnotifsdiv{
+    width: 50%;
+    padding-left: 1rem;
+    height: 100%;
+    
+}
+
+.del-notifs-list{
+    height: 100%;
+    display: flex;
+    border-radius: 1rem;
+    background-color: #cfcfcf;
+    width: 100%;
+    flex-direction: column;
+    overflow: auto;
+    align-self: stretch;
+}
+
+/*Notification General Styling*/
+
+.notif-div{
+    padding: 1rem;
+    width: 100%;
+}
+
+.notif-card{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    width: 100%;
+}
+
+.notif-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.notif-left{
+
+}
+
+.time-stamp-div{
+
+}
+
+.time-stamp{
+
+}
+
+.notif-right{
+
+}
+
+.notif-close-div{
+    
+}
+
+.notif-close{
+    background-color: #ff4653;
+    border-radius: 50%;
+    border: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.notif-x{
+    height: 0.7rem;
+    width: 0.7rem;
+
+}
+
+.notif-btm{
+
+}
+
+.notif-content{
+
+}
+
+.notif-txt{
+    margin: 0;
+}
+
+

@@ -10,6 +10,11 @@ body{
     display: flex;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .doorway-container{
     height: 100%;
     width: 100%;
@@ -41,24 +46,28 @@ body{
     border-radius: 0.3rem;
     font-style: normal;
     text-decoration: none;
-
 }
+
+/*Container for Doorway Body Content*/
 
 .doorbdydiv{
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    width: 100%; 
 }
 
-/*Security Section*/
-
-.sectionsecdiv{
-    width: 100%;
-    height: 100%;
-}
+/**/
 
 .sectionsec{
-    width: 100%;
     height: 100%;
+    width: 100%;
+}
+
+.delsection{
+    /* height: 100%;
+    width: 100%; */
+    height: 100%;
+    width: 100%;
 }
 
 .sectitlediv{
@@ -70,101 +79,122 @@ body{
     margin: 0;
 }
 
-.secbdydiv, .delbdydiv{
-    width: 100%;
+.deltitlediv{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.deltitle{
+    margin: 0;
+}
+
+
+.sec-flex-container{
     display: flex;
-    height: 100%;
-    /* flex-direction: column; */
+    padding-bottom: 2rem;
 }
 
-.secfeeddiv, .delfeeddiv{
+.del-flex-container{
+    display: flex;
+    padding-bottom: 2rem;
+}
+
+/*Image Container*/
+.secfeeddiv, .secnotifsdiv{
+
+}
+
+.sec-content{
+    flex: 1 1 auto;
+}
+
+.del-content{
+    flex: 1 1 auto;
+}
+
+/*List Holder*/
+.secnotifsdiv{
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    height: 100%;
-    padding-right: 1rem;
 }
 
-.secfeed{
-    width: 100%;
+.delfeeddiv, .delnotifsdiv{
+
+}
+
+/*Delivery Notification Styling*/
+
+.delnotifsdiv{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.secfeeddiv{
+    width: 50%;
 }
 
 .secfeed-img{
     width: 100%;
-    height: 100%;
-    min-width: 30rem;
+    height: auto;
+    max-height: 100%;
 }
 
-/*Delivery Section*/
 
-.delsectiondiv{
-    height: 100%;
-    width: 100%;
-    padding-bottom: 1rem;
-}
-
-.delsection{
-    height: 100%;
-    width: 100%;
-}
-
-.deltitlediv{
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-
-}
-
-.deltitle{
-
-    margin: 0;
-}
-
-.delfeed{
-    width: 100%;
+.delfeeddiv{
+    width: 50%;
 }
 
 .delfeed-img{
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.sec-list-div{
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+
+/*Notifications Card List*/
+.sec-notifs-list{
+    width: 100%;
+    background-color: #cfcfcf;
+    border-radius: 1rem;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    overflow-y: auto;
+    
+    /*display: flex;
+    flex-direction: column;*/
+}
+
+.del-list-div{
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.del-notifs-list{
+    width: 100%;
+    background-color: #cfcfcf;
+    border-radius: 1rem;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    overflow-y: auto;
 }
 
 
 /*Notification General Styling*/
-
-.secnotifsdiv{
-    width: 50%;
-    padding-left: 1rem;
-    height: 100%;
-}
-
-
-.delnotifsdiv{
-    width: 50%;
-    padding-left: 1rem;
-    height: 100%;
-    
-}
-
-.sec-notifs-list{
-    height: 100%;
-    display: flex;
-    border-radius: 1rem;
-    background-color: #cfcfcf;
-    width: 100%;
-    flex-direction: column;
-    overflow: auto;
-    align-self: stretch;
-    flex: 1;
-}
-
-.del-notifs-list{
-    height: 100%;
-    display: flex;
-    border-radius: 1rem;
-    background-color: #cfcfcf;
-    width: 100%;
-    flex-direction: column;
-    overflow: auto;
-    align-self: stretch;
-}
 
 .notif-div{
     padding: 1rem;
@@ -232,3 +262,5 @@ body{
 .notif-txt{
     margin: 0;
 }
+
+
