@@ -1,7 +1,58 @@
-/* .lightswitch{
+html, body, .liv-room-container{
+    height: 100%;
+    width: 100%;
+}
+
+.liv-room-container{
+    padding: 2rem;
+}
+
+.livtitlediv{
+    padding-bottom: 2rem;
+}
+
+.livtitletxt{
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.livbackdiv{
+    padding-bottom: 1.2rem;
+}
+
+.livbackbtn{
+    background-color: #4583FC;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.3rem;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.livbdydiv{
+
+}
+
+.livlightdiv{
+
+}
+
+.light-label-div{
+    padding-bottom: 1rem;
+}
+
+.light-label{
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.lightswitch{
     position: relative;
-    width: 2rem;
-    height: 1rem;
+    width: 4rem;
+    height: 2rem;
+    display: inline-block;
+
 }
 
 .livlighttoggle{
@@ -10,7 +61,7 @@
     height: 0;
 }
 
-.slider {
+.light-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -20,33 +71,119 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 0.7rem;
+    border-radius: 2.25rem;
 }
-  
-.slider:before {
+
+.light-slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 1.625rem;
+    width: 1.625rem;
+    left: 0.25rem;
+    bottom: 0.25rem;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
 }
-  
-.livlighttoggle:checked + .slider {
-    background-color: #2196F3;
+
+.livlighttoggle:checked + .light-slider {
+    background-color: #4583FC;
+}
+
+.livlighttoggle:focus + .light-slider:before {
+    box-shadow: 0 0 0.0625rem #4583FC;
+}
+
+.livlighttoggle:checked + .light-slider:before {
+    -webkit-transform: translateX(1.625rem);
+    -ms-transform: translateX(1.625rem);
+    transform: translateX(1.625rem);
 }
   
-.livlighttoggle:focus + .slider {
-    box-shadow: 0 0 0.2rem #2196F3;
+.lightstatusdiv{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
-  
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+
+.lrlightstatus{
+    margin: 0;
+    font-size: 1.1rem;
 }
-   */
+
+.livfandiv{
+
+}
+
+.fan-label-div{
+    padding-bottom: 1rem;
+}
+
+.fan-label{
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.fanswitch{
+    position: relative;
+    width: 4rem;
+    height: 2rem;
+    display: inline-block;
+}
+
+.livfantoggle{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.fanslider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 2.25rem;
+}
+
+.fanslider::before{
+    position: absolute;
+    content: "";
+    height: 1.625rem;
+    width: 1.625rem;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.livfantoggle:checked + .fanslider{
+    background-color: #4583FC; 
+}
+
+.livlighttoggle:focus + .fanslider::before{
+    box-shadow: 0 0 0.0625rem #4583FC;
+}
+
+.livfantoggle:checked + .fanslider:before {
+    -webkit-transform: translateX(1.625rem);
+    -ms-transform: translateX(1.625rem);
+    transform: translateX(1.625rem);
+  }
+
+.fanstatusdiv{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.lrfanstatus{
+    margin: 0;
+    font-size: 1.1rem;
+}

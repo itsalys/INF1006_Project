@@ -53,8 +53,12 @@
 
                         
                         <div class="secfeeddiv sec-content">
-                            
-                            <img src="{{ url_for('static', filename='images/Security_image.jpg') }}" class="secfeed-img">
+                            <img src="{{ url_for('static', filename='images/security_placeholder.png') }}" 
+                            class="secfeed-img sec-img-placeholder" id="sec-img-placeholder" 
+                            alt="Security Camera Feed Placeholder">
+                            <img src="{{ url_for('static', filename='images/Security_image.jpg') }}" 
+                            class="secfeed-img" id="secfeed-img" 
+                            alt="Security Camera Feed Image" onerror="imageError('secfeed-img')" onload="imageLoad('secfeed-img')">
                         </div>
 
                         
@@ -126,7 +130,11 @@
                         <!--Delivery Image Container-->
                         <div class="delfeeddiv del-content">
                             <!--Delivery Image-->
-                            <img src="{{ url_for('static', filename='images/Delivery_image.jpg') }}" class="delfeed-img">
+                            <img src="{{ url_for('static', filename='images/delivery_placeholder.png') }}" class="delfeed-img del-img-placeholder" id="del-img-placeholder" alt="Delivery Camera Feed Placeholder" >
+                            <!--Delivery Image-->
+                            <img src="{{ url_for('static', filename='images/Delivery_images.jpg') }}" 
+                            class="delfeed-img" id="delfeed-img" alt="Delivery Camera Feed Image" 
+                            onerror="imageError('delfeed-img')" onload="imageLoad('delfeed-img')">
                         </div>
 
                         <!--List Container-->

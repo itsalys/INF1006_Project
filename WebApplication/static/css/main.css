@@ -1,0 +1,63 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.home-container{
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+}
+
+.hometitlediv{
+    padding-bottom: 1.75rem;
+    font-size: 1.5rem;
+}
+
+.hometitletxt{
+    margin: 0;
+}
+
+.homebdydiv{
+
+}
+
+.homedoordiv{
+    padding-bottom: 1.2rem;
+}
+
+.homedoorbtn{
+    background-color: #4583FC;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.3rem;
+    font-style: normal;
+    text-decoration: none;
+
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.homelivdiv{
+    padding-bottom: 1.2rem;
+}
+
+.homelivbtn{
+    background-color: #4583FC;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 0.3rem;
+    font-style: normal;
+    text-decoration: none;
+
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}

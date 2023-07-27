@@ -1,7 +1,3 @@
-if(window.deliveryList == undefined){
-
-}
-
 
 function createSecurityNotifCard(){
 
@@ -141,6 +137,38 @@ function createDeliveryNotifCard(){
     delNotifsList.appendChild(notifDiv);
 }
 
+function imageError(id){
+    image = document.getElementById(id);
+    image.style.display = "none";
+    
+    if (id == "secfeed-img"){
+        placeholder = document.getElementById("sec-img-placeholder")
+        placeholder.style.display = "block";
+    }
+    else if(id == "delfeed-img"){
+        placeholder = document.getElementById("del-img-placeholder")
+        placeholder.style.display = "block";
+    
+    }
+    
+    
+}
+
+function imageLoad(id){
+    image = document.getElementById(id);
+    image.style.display = "block";
+    
+    if (id == "secfeed-img"){
+        placeholder = document.getElementById("sec-img-placeholder")
+        placeholder.style.display = "none";
+    }
+    else if(id == "delfeed-img"){
+        placeholder = document.getElementById("del-img-placeholder")
+        placeholder.style.display = "none";
+    
+    }
+
+}
 
 $(document).ready(function() {
 
