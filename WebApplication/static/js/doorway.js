@@ -155,9 +155,13 @@ function load() {
         const securityList = [];
         const deliveryList = [];
 
+        const secTimeStamp = [];
+        const delTimeStamp = [];
+
         // If the received data is a JavaScript object, handle it
         if (typeof data === "object") {
-        mqttMessage = JSON.stringify(data);
+            
+            mqttMessage = JSON.stringify(data);
         // $("#mqtt-message").html("MQTT Message: " + mqttMessage);
             // Loop through all the received messages
             for (var i = 0; i < data.length; i++) {
@@ -166,114 +170,48 @@ function load() {
                 // Check the topic and adjust the checkboxes accordingly
 
                 if(msg.topic == "Doorway/Security"){
-                    securityList.push(String(msg.mqttdata.picture));
                     console.log("Security Index: ", i);
-                    const secNotifsList = document.getElementById("sec-notifs-list");
-
-                    console.log("REACHED SECURITY");
-                    const sec_temp = sessionStorage.getItem('securityURL');
-                    if(String(msg.mqttdata.picture) !== sec_temp){
-                        console.log('This does not match, security');
-                        createSecurityNotifCard(String(msg.mqttdata.timestamp));
-                        sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
-                        $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                    }
-                    else{
-                        
-                        console.log('This matches, security');
-                        sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
-                        if (!secNotifsList.hasChildNodes()){
-                            createSecurityNotifCard(String(msg.mqttdata.timestamp));
-                        }
-                        $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                    }
-
-                    //break;
+                    console.log("Security Time Stamp String", String(msg.mqttdata.timestamp));
+                    secTimeStamp.push(String(msg.mqttdata.timestamp));
+                    securityList.push(String(msg.mqttdata.picture));
 
                 }
                 else if(msg.topic == "Doorway/Delivery"){
-                    deliveryList.push(String(msg.mqttdata.picture));
                     console.log("Delivery Index: ", i);
-                    console.log("REACHED DELIVERY");
-                    const delNotifsList = document.getElementById("del-notifs-list");
+                    console.log("Delivery Time Stamp String", String(msg.mqttdata.timestamp));
+                    delTimeStamp.push(String(msg.mqttdata.timestamp));
+                    deliveryList.push(String(msg.mqttdata.picture));
 
-                    const del_temp = sessionStorage.getItem('deliveryURL');
-                    if(String(msg.mqttdata.picture) !== del_temp){
-                        console.log('This does not match, delivery');
-                        createDeliveryNotifCard(String(msg.mqttdata.timestamp));
-                        sessionStorage.setItem('deliveryURL', '' )
-                        sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
-                        $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                    }
-                    else{
-                        console.log('This matches, delivery');
-                        sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
-                        if (!delNotifsList.hasChildNodes()){
-                            createDeliveryNotifCard(String(msg.mqttdata.timestamp));
-                        }
-                        $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                    }
-                    
-                    
-                    //break;
                 }
 
-                // switch (msg.topic) {
-                    
-                //     case "Doorway/Security":
-                //         const secNotifsList = document.getElementById("sec-notifs-list");
-
-                //         console.log("REACHED SECURITY");
-                //         const sec_temp = sessionStorage.getItem('securityURL');
-                //         if(String(msg.mqttdata.picture) !== sec_temp){
-                //             console.log('This does not match, security');
-                //             createSecurityNotifCard(String(msg.mqttdata.timestamp));
-                //             sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
-                //             $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                //         }
-                //         else{
-                //             console.log('This matches, security');
-                //             sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
-                //             if (!secNotifsList.hasChildNodes()){
-                //                 createSecurityNotifCard(String(msg.mqttdata.timestamp));
-                //             }
-                //             $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                //         }
-                        
-                //         break;
-
-                //     case "Doorway/Delivery":
-                //         console.log("REACHED DELIVERY");
-                //         const delNotifsList = document.getElementById("del-notifs-list");
-
-                //         const del_temp = sessionStorage.getItem('deliveryURL');
-                //         if(String(msg.mqttdata.picture) !== del_temp){
-                //             console.log('This does not match, delivery');
-                //             createDeliveryNotifCard(String(msg.mqttdata.timestamp));
-                //             sessionStorage.setItem('deliveryURL', '' )
-                //             sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
-                //             $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                //         }
-                //         else{
-                //             console.log('This matches, delivery');
-                //             sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
-                //             if (!delNotifsList.hasChildNodes()){
-                //                 createDeliveryNotifCard(String(msg.mqttdata.timestamp));
-                //             }
-                //             $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
-                //         }
-                        
-                        
-                //         break;
-
-                // }
             }
 
             const recentSecurity = securityList.pop();
             const recentDelivery = deliveryList.pop();
 
-            sessionStorage.setItem('securityURL', recentSecurity );
-            sessionStorage.setItem('deliveryURL', recentDelivery );
+            console.log("Security Time Stamp List: ", secTimeStamp);
+            console.log("Delivery Time Stamp List: ", delTimeStamp);
+
+            const securityTS = secTimeStamp.pop();
+            const deliveryTS = delTimeStamp.pop();
+
+            console.log("Security Time Stamp: ", securityTS);
+            console.log("Delivery Time Stamp: ", deliveryTS);
+
+            const pastSecurityURL =  sessionStorage.getItem('securityURL');
+            const pastDeliveryURL =  sessionStorage.getItem('deliveryURL');
+            
+            if(recentSecurity != pastSecurityURL){
+                sessionStorage.setItem('securityURL', recentSecurity );
+                $('#secfeed-img').attr("src", "data:image/jpg;base64," + recentSecurity);
+                createSecurityNotifCard(securityTS);
+            }
+
+            if(recentDelivery != pastDeliveryURL){
+                sessionStorage.setItem('deliveryURL', recentDelivery );
+                $('#delfeed-img').attr("src", "data:image/jpg;base64," + recentDelivery);
+                createDeliveryNotifCard(deliveryTS);
+            } 
 
         }
     });
@@ -320,3 +258,143 @@ $(document).ready(function() {
         console.log("Test");
     }, 5000)
 });
+
+//Back Up Function Load
+
+// function load() {
+//     console.log("Loading");
+//     $.get("/process/sub", function (data) {
+//         const securityList = [];
+//         const deliveryList = [];
+
+//         // If the received data is a JavaScript object, handle it
+//         if (typeof data === "object") {
+//         mqttMessage = JSON.stringify(data);
+//         // $("#mqtt-message").html("MQTT Message: " + mqttMessage);
+//             // Loop through all the received messages
+//             for (var i = 0; i < data.length; i++) {
+//                 var msg = data[i];
+//                 console.log("This is the topic: ", msg.topic);
+//                 // Check the topic and adjust the checkboxes accordingly
+
+//                 if(msg.topic == "Doorway/Security"){
+
+//                     //Check if there is any images already in security
+//                     const len = securityList.length 
+
+                    
+
+
+//                     securityList.push(String(msg.mqttdata.picture));
+//                     console.log("Security Index: ", i);
+//                     const secNotifsList = document.getElementById("sec-notifs-list");
+
+//                     console.log("REACHED SECURITY");
+
+//                     const sec_temp = sessionStorage.getItem('securityURL');
+//                     if(String(msg.mqttdata.picture) !== sec_temp){
+//                         console.log('This does not match, security');
+//                         createSecurityNotifCard(String(msg.mqttdata.timestamp));
+//                         //sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
+//                         $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                     }
+//                     else{
+                        
+//                         console.log('This matches, security');
+//                         sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
+//                         if (!secNotifsList.hasChildNodes()){
+//                             createSecurityNotifCard(String(msg.mqttdata.timestamp));
+//                         }
+//                         $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                     }
+
+//                     //break;
+
+//                 }
+//                 else if(msg.topic == "Doorway/Delivery"){
+//                     deliveryList.push(String(msg.mqttdata.picture));
+//                     console.log("Delivery Index: ", i);
+//                     console.log("REACHED DELIVERY");
+//                     const delNotifsList = document.getElementById("del-notifs-list");
+
+//                     const del_temp = sessionStorage.getItem('deliveryURL');
+//                     if(String(msg.mqttdata.picture) !== del_temp){
+//                         console.log('This does not match, delivery');
+//                         createDeliveryNotifCard(String(msg.mqttdata.timestamp));
+//                         sessionStorage.setItem('deliveryURL', '' )
+//                         sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
+//                         $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                     }
+//                     else{
+//                         console.log('This matches, delivery');
+//                         sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
+//                         if (!delNotifsList.hasChildNodes()){
+//                             createDeliveryNotifCard(String(msg.mqttdata.timestamp));
+//                         }
+//                         $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                     }
+                    
+                    
+//                     //break;
+//                 }
+
+//                 // switch (msg.topic) {
+                    
+//                 //     case "Doorway/Security":
+//                 //         const secNotifsList = document.getElementById("sec-notifs-list");
+
+//                 //         console.log("REACHED SECURITY");
+//                 //         const sec_temp = sessionStorage.getItem('securityURL');
+//                 //         if(String(msg.mqttdata.picture) !== sec_temp){
+//                 //             console.log('This does not match, security');
+//                 //             createSecurityNotifCard(String(msg.mqttdata.timestamp));
+//                 //             sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
+//                 //             $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                 //         }
+//                 //         else{
+//                 //             console.log('This matches, security');
+//                 //             sessionStorage.setItem('securityURL', String(msg.mqttdata.picture) )
+//                 //             if (!secNotifsList.hasChildNodes()){
+//                 //                 createSecurityNotifCard(String(msg.mqttdata.timestamp));
+//                 //             }
+//                 //             $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                 //         }
+                        
+//                 //         break;
+
+//                 //     case "Doorway/Delivery":
+//                 //         console.log("REACHED DELIVERY");
+//                 //         const delNotifsList = document.getElementById("del-notifs-list");
+
+//                 //         const del_temp = sessionStorage.getItem('deliveryURL');
+//                 //         if(String(msg.mqttdata.picture) !== del_temp){
+//                 //             console.log('This does not match, delivery');
+//                 //             createDeliveryNotifCard(String(msg.mqttdata.timestamp));
+//                 //             sessionStorage.setItem('deliveryURL', '' )
+//                 //             sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
+//                 //             $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                 //         }
+//                 //         else{
+//                 //             console.log('This matches, delivery');
+//                 //             sessionStorage.setItem('deliveryURL', String(msg.mqttdata.picture) )
+//                 //             if (!delNotifsList.hasChildNodes()){
+//                 //                 createDeliveryNotifCard(String(msg.mqttdata.timestamp));
+//                 //             }
+//                 //             $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+//                 //         }
+                        
+                        
+//                 //         break;
+
+//                 // }
+//             }
+
+//             const recentSecurity = securityList.pop();
+//             const recentDelivery = deliveryList.pop();
+
+//             sessionStorage.setItem('securityURL', recentSecurity );
+//             sessionStorage.setItem('deliveryURL', recentDelivery );
+
+//         }
+//     });
+// }
