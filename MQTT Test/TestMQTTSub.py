@@ -1,10 +1,10 @@
 # pip3 install paho-mqtt
 import paho.mqtt.client as mqtt
 
-mqtt_broker = "192.168.10.141"
+mqtt_broker = "192.168.1.2"
 mqtt_username = "admin"
 mqtt_pwd = "mqttbroker"
-topics = [("test/topic1", 0), ("test/topic2", 0)]
+topics = [("Doorway/Delivery", 0), ("Doorway/Security", 0)]
 
 def on_connect(client, userdata, flags, rc):
     print("Connection attempt returned: " + mqtt.connack_string(rc))
@@ -12,7 +12,7 @@ def on_connect(client, userdata, flags, rc):
 
 # runs whenever a new msg is received from mqtt broker
 def on_message(client, userdata, msg):
-    print(f"{msg.topic}: {msg.payload.decode()}\n")
+    print(f"{msg.topic}\n")
 
 client = mqtt.Client()
 client.username_pw_set(mqtt_username, mqtt_pwd) # comment out if no usr name and password set

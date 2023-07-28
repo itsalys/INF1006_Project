@@ -27,6 +27,12 @@ html, body, .liv-room-container{
     border-radius: 0.3rem;
     font-style: normal;
     text-decoration: none;
+
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
 }
 
 .livbdydiv{

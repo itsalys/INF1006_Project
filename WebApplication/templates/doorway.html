@@ -9,6 +9,7 @@
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="static/css/style.css"> -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
@@ -30,13 +31,13 @@
                 <a href="../" class="doorbackbtn">Back to Main Menu</a>
             </div>
 
-            <div class="testdiv">
+            <!-- <div class="testdiv">
                 <button onclick="createSecurityNotifCard()" class="testbtn" id="sec-btn">Add New Security Card</button>
             </div>
 
             <div class="testdiv">
                 <button onclick="createDeliveryNotifCard()" class="testbtn" id="del-btn">Add New Delivery Card</button>
-            </div>
+            </div> -->
 
             
             <div class="doorbdydiv">
@@ -56,7 +57,7 @@
                             <img src="{{ url_for('static', filename='images/security_placeholder.png') }}" 
                             class="secfeed-img sec-img-placeholder" id="sec-img-placeholder" 
                             alt="Security Camera Feed Placeholder">
-                            <img src="{{ url_for('static', filename='images/Security_image.jpg') }}" 
+                            <img src="#" 
                             class="secfeed-img" id="secfeed-img" 
                             alt="Security Camera Feed Image" onerror="imageError('secfeed-img')" onload="imageLoad('secfeed-img')">
                         </div>
@@ -67,43 +68,7 @@
                             <div class="sec-list-div">
                                 <div class="sec-notifs-list" id="sec-notifs-list">
 
-                                    <!-- Example of Security Notifications-->
-                                    <div class="notif-div sec-notif-div">
-                                        <div class="notif-card">
-            
-                                            <div class="notif-top">
-                                                
-                                                <div class="notif-left">
-                                                    <!--Time Stamp-->
-                                                    <div class="time-stamp-div">
-                                                        <p class="time-stamp">
-                                                            09:04:58 10/03/2023
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div> 
-                                                
-                                                <div class="notif-right">
-                                                    <!--Close Button-->
-                                                    <div class="notif-close-div">
-                                                        <button class="notif-close">
-                                                            <img src="../static/svg/x.svg" class="notif-x">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-            
-                                            <div class="notif-btm">
-                                                <div class="notif-content">
-                                                    <p class="notif-txt">
-                                                        Someone is outside your door! Please check the feed.
-                                                    </p>
-                                                </div>
-            
-                                            </div>
-                                        </div>
-                                        
-                                    </div>    
+                                    
                                     
                                 </div>
                             </div>
@@ -132,9 +97,13 @@
                             <!--Delivery Image-->
                             <img src="{{ url_for('static', filename='images/delivery_placeholder.png') }}" class="delfeed-img del-img-placeholder" id="del-img-placeholder" alt="Delivery Camera Feed Placeholder" >
                             <!--Delivery Image-->
-                            <img src="{{ url_for('static', filename='images/Delivery_images.jpg') }}" 
+                            <img src="#" 
                             class="delfeed-img" id="delfeed-img" alt="Delivery Camera Feed Image" 
                             onerror="imageError('delfeed-img')" onload="imageLoad('delfeed-img')">
+                            
+                            <!-- <img src="{{ url_for('static', filename='images/Delivery_image.jpg') }}" 
+                            class="delfeed-img" id="delfeed-img" alt="Delivery Camera Feed Image" 
+                            onerror="imageError('delfeed-img')" onload="imageLoad('delfeed-img')"> -->
                         </div>
 
                         <!--List Container-->
@@ -144,44 +113,6 @@
                                 <!--Delivery Notif List-->
                                 <div class="del-notifs-list"  id="del-notifs-list">
 
-                                    <!-- Example of Delivery Notifications-->
-
-                                    <div class="notif-div del-notif-div">
-                                        <div class="notif-card">
-            
-                                            <div class="notif-top">
-                                                
-                                                <div class="notif-left">
-                                                    <!--Time Stamp-->
-                                                    <div class="time-stamp-div">
-                                                        <p class="time-stamp">
-                                                            09:04:58 10/03/2023
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div> 
-                                                
-                                                <div class="notif-right">
-                                                    <!--Close Button-->
-                                                    <div class="notif-close-div">
-                                                        <button class="notif-close" onclick="">
-                                                            <img src="../static/svg/x.svg" class="notif-x">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-            
-                                            <div class="notif-btm">
-                                                <div class="notif-content">
-                                                    <p class="notif-txt">
-                                                        You have a delivery! Please check the feed for photos.
-                                                    </p>
-                                                </div>
-            
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
 
                                 </div>
                             </div>

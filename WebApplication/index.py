@@ -5,9 +5,37 @@ from flask import request
 from camera import Camera
 import subprocess
 import queue
-
+import paho.mqtt.client as mqtt
 
 app = Flask(__name__)
+
+received_messages = []
+
+mqtt_broker = "192.168.1.2"
+mqtt_username = "admin"
+mqtt_pwd = "mqttbroker"
+topics = [("Doorway/Delivery", 0), ("Doorway/Security", 0)]
+
+# Callback function when a message is received from the subscribed topics
+def on_message(client, userdata, msg):
+
+    received_data = json.loads(msg.payload.decode("utf-8", "ignore"))
+    # received_data = json.loads(msg.payload)
+    print(f"topic: {msg.topic}")
+
+    received_messages.append({"topic": msg.topic, "mqttdata": received_data})
+
+def on_connect(client, userdata, flags, rc):
+    print("Connection attempt returned: " + mqtt.connack_string(rc))
+    print(f"Successfully connected to MQTT Broker @ {mqtt_broker}")
+
+client = mqtt.Client()
+client.username_pw_set(mqtt_username, mqtt_pwd) # comment out if no usr name and password set
+client.connect(mqtt_broker, 1883)
+client.on_connect = on_connect
+client.subscribe(topics)
+client.on_message = on_message
+client.loop_start()
 
 
 @app.route('/')
@@ -22,9 +50,11 @@ def analytics():
 def doorway():
     return render_template('doorway.html')
 
-@app.route("/doorway/retrieve")
-def retrieve_data():
-    return
+@app.route('/process/sub')
+def get_mqtt_message():
+    global received_messages
+    print(received_messages)
+    return jsonify(received_messages)
 
 
 @app.route('/livingroom')
