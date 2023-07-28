@@ -1,0 +1,5 @@
+/* @font-face {
+    font-family: 'Inter';
+    src: url("{{ url_for('static', filename='css/inter/Inter-VariableFont_slnt\,wght.ttf') }}")
+    src: url('/WebApplication/static/css/inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+} */

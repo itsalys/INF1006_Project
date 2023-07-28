@@ -53,7 +53,8 @@ def doorway():
 @app.route('/process/sub')
 def get_mqtt_message():
     global received_messages
-    print(received_messages)
+    #print(received_messages)
+    print("Messages Received")
     return jsonify(received_messages)
 
 

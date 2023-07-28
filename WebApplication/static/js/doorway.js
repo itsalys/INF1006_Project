@@ -1,3 +1,13 @@
+
+// Instead of using $(document).ready(), use the 'DOMContentLoaded' event
+document.addEventListener("DOMContentLoaded", function() {
+    // Call the load function every 5000 milliseconds (5 seconds)
+    setInterval(load, 5000);
+    setInterval(function(){
+        console.log("Test");
+    }, 5000);
+});
+
 window.addEventListener("load", (event) =>{
     sessionStorage.setItem('securityURL', "");
     sessionStorage.setItem('deliveryURL', "");
@@ -11,12 +21,14 @@ if(sessionStorage.getItem('deliveryURL') == null){
     sessionStorage.setItem('deliveryURL', "");
 }
 
+
 function createSecurityNotifCard(ts){
 
     const secNotifsList = document.getElementById("sec-notifs-list");
 
     const notifDiv = document.createElement("div");
     notifDiv.classList.add('notif-div', 'sec-notif-div');
+    notifDiv.setAttribute("id", ts);
 
     const notifCard = document.createElement("div");
     notifCard.className = "notif-card"
@@ -42,6 +54,12 @@ function createSecurityNotifCard(ts){
 
     const notifClose = document.createElement("button");
     notifClose.className = "notif-close"
+    //notifClose.onclick = deleteSecurityNotif(ts);
+    notifClose.addEventListener("click", function(){
+        console.log("Delete");
+        document.getElementById(ts).remove();
+        //document.getElementById("secfeed-img").setAttribute("src", "#");
+    });
 
     const notifX = document.createElement("img");
     notifX.className = "notif-x"
@@ -86,6 +104,7 @@ function createDeliveryNotifCard(ts){
 
     const notifDiv = document.createElement("div");
     notifDiv.classList.add('notif-div', 'del-notif-div');
+    notifDiv.setAttribute("id", ts);
 
     const notifCard = document.createElement("div");
     notifCard.className = "notif-card"
@@ -111,6 +130,15 @@ function createDeliveryNotifCard(ts){
 
     const notifClose = document.createElement("button");
     notifClose.className = "notif-close"
+    //notifClose.onclick = deleteDeliveryNotif(ts);
+    notifClose.addEventListener("click", function(){
+        console.log("Delete");
+        document.getElementById(ts).remove();
+        //document.getElementById("delfeed-img").setAttribute("src", "#");
+
+        
+    });
+
 
     const notifX = document.createElement("img");
     notifX.className = "notif-x"
@@ -149,8 +177,88 @@ function createDeliveryNotifCard(ts){
     delNotifsList.appendChild(notifDiv);
 }
 
+
 function load() {
     console.log("Loading");
+
+    // const req = new XMLHttpRequest();
+    // req.open("GET", "/process/sub", true);
+    // req.onload = function(){
+    //     if (request.status >= 200 && request.status < 400) {
+    //         const data = JSON.parse(request.responseText);
+    //         const securityList = [];
+    //         const deliveryList = [];
+
+    //         const secTimeStamp = [];
+    //         const delTimeStamp = [];
+
+    //         // If the received data is a JavaScript object, handle it
+    //         if (typeof data === "object") {
+                
+    //             mqttMessage = JSON.stringify(data);
+    //         // $("#mqtt-message").html("MQTT Message: " + mqttMessage);
+    //             // Loop through all the received messages
+    //             for (var i = 0; i < data.length; i++) {
+    //                 var msg = data[i];
+    //                 console.log("This is the topic: ", msg.topic);
+    //                 // Check the topic and adjust the checkboxes accordingly
+
+    //                 if(msg.topic == "Doorway/Security"){
+    //                     console.log("Security Index: ", i);
+    //                     console.log("Security Time Stamp String", String(msg.mqttdata.timestamp));
+    //                     secTimeStamp.push(String(msg.mqttdata.timestamp));
+    //                     securityList.push(String(msg.mqttdata.picture));
+    //                     //document.getElementById('secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+
+    //                 }
+    //                 else if(msg.topic == "Doorway/Delivery"){
+    //                     console.log("Delivery Index: ", i);
+    //                     console.log("Delivery Time Stamp String", String(msg.mqttdata.timestamp));
+    //                     delTimeStamp.push(String(msg.mqttdata.timestamp));
+    //                     deliveryList.push(String(msg.mqttdata.picture));
+    //                     //document.getElementById('delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+
+    //                 }
+
+    //             }
+
+    //             const recentSecurity = securityList.pop();
+    //             const recentDelivery = deliveryList.pop();
+
+    //             console.log("Security Time Stamp List: ", secTimeStamp);
+    //             console.log("Delivery Time Stamp List: ", delTimeStamp);
+
+    //             const securityTS = secTimeStamp.pop();
+    //             const deliveryTS = delTimeStamp.pop();
+
+    //             console.log("Security Time Stamp: ", securityTS);
+    //             console.log("Delivery Time Stamp: ", deliveryTS);
+
+    //             const pastSecurityURL =  sessionStorage.getItem('securityURL');
+    //             const pastDeliveryURL =  sessionStorage.getItem('deliveryURL');
+
+    //             //console.log("Past Security URL: ", pastSecurityURL);
+    //             //console.log("Past Delivery URL: ", pastDeliveryURL);
+
+    //             if(recentSecurity != pastSecurityURL){
+    //                 sessionStorage.setItem('securityURL', recentSecurity );
+    //                 document.getElementById('secfeed-img').setAttribute("src", "data:image/jpg;base64," + recentSecurity);
+    //                 createSecurityNotifCard(securityTS);
+    //                 console.log("Console Log Security Notif", document.getElementById(securityTS));
+    //             }
+
+    //             if(recentDelivery != pastDeliveryURL){
+    //                 sessionStorage.setItem('deliveryURL', recentDelivery );
+    //                 document.getElementById('delfeed-img').setAttribute("src", "data:image/jpg;base64," + recentDelivery);
+    //                 createDeliveryNotifCard(deliveryTS);
+    //                 console.log("Console Log Delivery Notif", document.getElementById(deliveryTS));
+    //             } 
+
+    //         }
+    //     }
+
+    // }
+
     $.get("/process/sub", function (data) {
         const securityList = [];
         const deliveryList = [];
@@ -174,6 +282,7 @@ function load() {
                     console.log("Security Time Stamp String", String(msg.mqttdata.timestamp));
                     secTimeStamp.push(String(msg.mqttdata.timestamp));
                     securityList.push(String(msg.mqttdata.picture));
+                    $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
 
                 }
                 else if(msg.topic == "Doorway/Delivery"){
@@ -181,6 +290,7 @@ function load() {
                     console.log("Delivery Time Stamp String", String(msg.mqttdata.timestamp));
                     delTimeStamp.push(String(msg.mqttdata.timestamp));
                     deliveryList.push(String(msg.mqttdata.picture));
+                    $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
 
                 }
 
@@ -200,17 +310,22 @@ function load() {
 
             const pastSecurityURL =  sessionStorage.getItem('securityURL');
             const pastDeliveryURL =  sessionStorage.getItem('deliveryURL');
-            
+
+            //console.log("Past Security URL: ", pastSecurityURL);
+            //console.log("Past Delivery URL: ", pastDeliveryURL);
+
             if(recentSecurity != pastSecurityURL){
                 sessionStorage.setItem('securityURL', recentSecurity );
                 $('#secfeed-img').attr("src", "data:image/jpg;base64," + recentSecurity);
                 createSecurityNotifCard(securityTS);
+                console.log("Console Log Security Notif", document.getElementById(securityTS));
             }
 
             if(recentDelivery != pastDeliveryURL){
                 sessionStorage.setItem('deliveryURL', recentDelivery );
                 $('#delfeed-img').attr("src", "data:image/jpg;base64," + recentDelivery);
                 createDeliveryNotifCard(deliveryTS);
+                console.log("Console Log Delivery Notif", document.getElementById(deliveryTS));
             } 
 
         }
@@ -250,16 +365,99 @@ function imageLoad(id){
 
 }
 
-$(document).ready(function() {
-    setInterval(function(){
-        load();
-    }, 5000);
-    setInterval(function(){
-        console.log("Test");
-    }, 5000)
-});
+//Back Up Updated
 
-//Back Up Function Load
+
+// function load() {
+//     console.log("Loading");
+
+    
+//     $.get("/process/sub", function (data) {
+//         const securityList = [];
+//         const deliveryList = [];
+
+//         const secTimeStamp = [];
+//         const delTimeStamp = [];
+
+//         // If the received data is a JavaScript object, handle it
+//         if (typeof data === "object") {
+            
+//             mqttMessage = JSON.stringify(data);
+//         // $("#mqtt-message").html("MQTT Message: " + mqttMessage);
+//             // Loop through all the received messages
+//             for (var i = 0; i < data.length; i++) {
+//                 var msg = data[i];
+//                 console.log("This is the topic: ", msg.topic);
+//                 // Check the topic and adjust the checkboxes accordingly
+
+//                 if(msg.topic == "Doorway/Security"){
+//                     console.log("Security Index: ", i);
+//                     console.log("Security Time Stamp String", String(msg.mqttdata.timestamp));
+//                     secTimeStamp.push(String(msg.mqttdata.timestamp));
+//                     securityList.push(String(msg.mqttdata.picture));
+//                     $('#secfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+
+//                 }
+//                 else if(msg.topic == "Doorway/Delivery"){
+//                     console.log("Delivery Index: ", i);
+//                     console.log("Delivery Time Stamp String", String(msg.mqttdata.timestamp));
+//                     delTimeStamp.push(String(msg.mqttdata.timestamp));
+//                     deliveryList.push(String(msg.mqttdata.picture));
+//                     $('#delfeed-img').attr("src", "data:image/jpg;base64," + String(msg.mqttdata.picture));
+
+//                 }
+
+//             }
+
+//             const recentSecurity = securityList.pop();
+//             const recentDelivery = deliveryList.pop();
+
+//             console.log("Security Time Stamp List: ", secTimeStamp);
+//             console.log("Delivery Time Stamp List: ", delTimeStamp);
+
+//             const securityTS = secTimeStamp.pop();
+//             const deliveryTS = delTimeStamp.pop();
+
+//             console.log("Security Time Stamp: ", securityTS);
+//             console.log("Delivery Time Stamp: ", deliveryTS);
+
+//             const pastSecurityURL =  sessionStorage.getItem('securityURL');
+//             const pastDeliveryURL =  sessionStorage.getItem('deliveryURL');
+
+//             //console.log("Past Security URL: ", pastSecurityURL);
+//             //console.log("Past Delivery URL: ", pastDeliveryURL);
+
+//             if(recentSecurity != pastSecurityURL){
+//                 sessionStorage.setItem('securityURL', recentSecurity );
+//                 $('#secfeed-img').attr("src", "data:image/jpg;base64," + recentSecurity);
+//                 createSecurityNotifCard(securityTS);
+//                 console.log("Console Log Security Notif", document.getElementById(securityTS));
+//             }
+
+//             if(recentDelivery != pastDeliveryURL){
+//                 sessionStorage.setItem('deliveryURL', recentDelivery );
+//                 $('#delfeed-img').attr("src", "data:image/jpg;base64," + recentDelivery);
+//                 createDeliveryNotifCard(deliveryTS);
+//                 console.log("Console Log Delivery Notif", document.getElementById(deliveryTS));
+//             } 
+
+//         }
+//     });
+// }
+
+
+
+
+// $(document).ready(function() {
+//     setInterval(function(){
+//         load();
+//     }, 5000);
+//     setInterval(function(){
+//         console.log("Test");
+//     }, 5000)
+// });
+
+// //Back Up Function Load
 
 // function load() {
 //     console.log("Loading");
@@ -276,7 +474,7 @@ $(document).ready(function() {
 //                 var msg = data[i];
 //                 console.log("This is the topic: ", msg.topic);
 //                 // Check the topic and adjust the checkboxes accordingly
-
+//                 console.log('Index: ', i);
 //                 if(msg.topic == "Doorway/Security"){
 
 //                     //Check if there is any images already in security
